@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Pattern Generator Calculator</title>
+    <meta name="description" content="Generate all possible combinations, permutations, and patterns from your digits.">
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>PaulGen</h1>
+            <button class="theme-toggle" id="themeToggle">☀️ Light Mode</button>
+        </header>
+
+        <div class="calculator-panel">
+            <div class="input-group">
+                <label class="input-label" for="digitsInput">Enter Digits (Up to 10)</label>
+                <input type="text" id="digitsInput" class="digit-input" placeholder="e.g. 1 2 3" autocomplete="off">
+                <div id="inputError" class="input-error"
+                    style="display:none; color: var(--danger); margin-top: 0.5rem; font-weight: 500;"></div>
+            </div>
+            <div class="button-group">
+                <button class="btn btn-primary" id="generateBtn">Generate</button>
+                <button class="btn btn-danger" id="resetBtn">Reset</button>
+            </div>
+            <div id="warningMsg"
+                style="display:none; text-align:center; color: var(--accent); margin-top: 1rem; font-weight: 600; padding: 0.5rem; background: rgba(139, 92, 246, 0.1); border-radius: 0.5rem; border: 1px solid var(--accent);">
+                ⚠️ Large input detected — results are being optimized for performance
+            </div>
+            <div id="loadingIndicator"
+                style="display:none; text-align:center; color: var(--primary); margin-top: 1rem; font-weight: 600;">
+                Generating numbers... <span id="progressText"></span>
+            </div>
+        </div>
+
+        <div class="counter-box" id="counterBox">
+            Total Numbers Generated
+            <span class="counter-value" id="counterValue">0</span>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="results-header">
+                <h2>Generated Patterns</h2>
+                <div class="action-buttons">
+                    <button class="action-btn" id="copyBtn">📋 Copy</button>
+                    <button class="action-btn" id="exportCsvBtn">📊 CSV</button>
+                    <button class="action-btn" id="exportTxtBtn">📄 TXT</button>
+                </div>
+            </div>
+
+            <div class="grid-container" id="lengthsContainer">
+                <!-- Dynamically populated digit lengths -->
+            </div>
+
+            <div class="grid-container">
+                <div class="result-card">
+                    <div class="card-header">
+                        <h3>Ascending Order</h3>
+                        <span class="badge" id="ascCount">0</span>
+                    </div>
+                    <div class="number-chips" id="ascContainer"></div>
+                </div>
+                <div class="result-card">
+                    <div class="card-header">
+                        <h3>Descending Order</h3>
+                        <span class="badge" id="descCount">0</span>
+                    </div>
+                    <div class="number-chips" id="descContainer"></div>
+                </div>
+                <div class="result-card">
+                    <div class="card-header">
+                        <h3>Even Numbers</h3>
+                        <span class="badge" id="evenCount">0</span>
+                    </div>
+                    <div class="number-chips" id="evenContainer"></div>
+                </div>
+                <div class="result-card">
+                    <div class="card-header">
+                        <h3>Odd Numbers</h3>
+                        <span class="badge" id="oddCount">0</span>
+                    </div>
+                    <div class="number-chips" id="oddContainer"></div>
+                </div>
+                <div class="result-card">
+                    <div class="card-header">
+                        <h3>Prime Numbers</h3>
+                        <span class="badge" id="primeCount">0</span>
+                    </div>
+                    <div class="number-chips" id="primeContainer"></div>
+                </div>
+            </div>
+
+            <div class="ai-insight">
+                <h3>💡 Smart Analysis Insight</h3>
+                <p id="aiInsightText"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
